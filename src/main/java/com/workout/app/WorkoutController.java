@@ -27,4 +27,9 @@ public class WorkoutController {
     public ArrayList<User> getUsers() {
         return workoutService.getUsers();
     }
+    
+    @PostMapping(path = "/login", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public boolean attepmtLogin(@RequestBody LoginUser loginUser) {
+        return workoutService.attemptLogin(loginUser);
+    }
 }

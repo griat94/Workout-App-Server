@@ -14,8 +14,8 @@ public class User {
     private String lastName;
     private String email;
     private Long phone;
-    private String username;
-    private String password;
+    String username;
+    String password;
     
     User() {}
     
