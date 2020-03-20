@@ -4,6 +4,7 @@ import java.util.*;
 
 public class WorkoutService {    
     ArrayList<User> users = new ArrayList<User>();
+    ArrayList<Workout> workouts = new ArrayList<Workout>();
     
     public void registerNewUser(User user){
         users.add(user);
@@ -23,7 +24,23 @@ public class WorkoutService {
                 }
             }
         }
-        
         return credentialsMatch;
-    }    
+    }  
+    
+    public void addWorkout(Workout workout) {
+        workouts.add(workout);
+    }
+    
+    public ArrayList<Workout> getWorkouts() {
+        return workouts;
+    }
+    
+    public void deleteWorkout(String workoutId) {
+        
+        for(int counter = 0; counter < workouts.size(); counter++) {
+            if(workouts.get(counter).id.equals(workoutId)) {
+                workouts.remove(counter);
+            }
+        }
+    }
 }
