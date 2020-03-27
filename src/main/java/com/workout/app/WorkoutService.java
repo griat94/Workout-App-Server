@@ -43,4 +43,8 @@ public class WorkoutService {
             }
         }
     }
+    
+    public void editWorkout(Workout workout, String WorkoutId) {
+        
+    }
 }
