@@ -1,5 +1,6 @@
 package com.workout.app;
 import com.workout.app.WorkoutService;
+import java.sql.SQLException;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class WorkoutController {
     WorkoutService workoutService = new WorkoutService(); 
     
     @PostMapping(path = "/register", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public void registerUser(@RequestBody User user) {
+    public void registerUser(@RequestBody User user) throws SQLException {
         workoutService.registerNewUser(user);
     }
     

@@ -1,13 +1,18 @@
 package com.workout.app;
 
+import java.sql.SQLException;
 import java.util.*; 
 
-public class WorkoutService {    
-    ArrayList<User> users = new ArrayList<User>();
-    ArrayList<Workout> workouts = new ArrayList<Workout>();
+public class WorkoutService {
     
-    public void registerNewUser(User user){
+    ArrayList<User> users = new ArrayList<User>();
+    ArrayList<Workout> workouts = new ArrayList<Workout>(); 
+        
+    Database db = new Database();
+
+    public void registerNewUser(User user) throws SQLException{
         users.add(user);
+        db.writeToUsersTable(user.id, user.firstName, user.lastName, user.email, user.phone, user.username, user.password);
     }
     
     public ArrayList<User> getUsers() {
