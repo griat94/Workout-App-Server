@@ -35,18 +35,18 @@ public class WorkoutController {
     }
     
     @PostMapping(path = "/login", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public boolean attepmtLogin(@RequestBody LoginUser loginUser) {
+    public String[] attepmtLogin(@RequestBody LoginUser loginUser) throws SQLException {
         return workoutService.attemptLogin(loginUser);
     }
     
     @PostMapping(path = "/addWorkout", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public void addWorkout(@RequestBody Workout workout) {
+    public void addWorkout(@RequestBody Workout workout) throws SQLException {
         workoutService.addWorkout(workout);
     }
     
-    @GetMapping("/getWorkouts")
-    public ArrayList<Workout> getWorkouts() {
-        return workoutService.getWorkouts();
+    @GetMapping("/getWorkouts/{userId}")
+    public ArrayList<Workout> getWorkouts(@PathVariable String userId) throws SQLException {
+        return workoutService.getWorkouts(userId);
     }
     
     @DeleteMapping(value = "/deleteWorkout/{workoutId}")
