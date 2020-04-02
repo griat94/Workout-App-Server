@@ -1,6 +1,5 @@
 package com.workout.app;
 
-import static com.workout.app.WorkoutService.connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -81,6 +80,27 @@ public class Database {
         }
         
         return workouts;
+    }
+    
+    public void editWorkoutByWorkoutId(Workout workout, String workoutId) throws SQLException {
+        String sql = "UPDATE `myWorkout`.`Workouts` SET `workoutType`=?, `exerciseName`=?, `weight`=?, `sets`=?, `repsPerSet`=? WHERE `id`='" + workoutId + "'";
+        
+        PreparedStatement updateStatement = connection.prepareStatement(sql);
+        updateStatement.setString(1, workout.workoutType);
+        updateStatement.setString(2, workout.exerciseName);
+        updateStatement.setInt(3, workout.weight);
+        updateStatement.setInt(4, workout.sets);
+        updateStatement.setInt(5, workout.repsPerSet);
+        
+        updateStatement.executeUpdate();
+    }
+    
+    public void deleteWorkoutByWorkoutId(String workoutId) throws SQLException {
+        String sql = "DELETE FROM `myWorkout`.`Workouts` WHERE `id`='" + workoutId + "'";
+        
+        PreparedStatement deleteStatement = connection.prepareStatement(sql);
+        
+        deleteStatement.executeUpdate();
     }
   
 

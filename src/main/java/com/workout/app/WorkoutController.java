@@ -50,12 +50,12 @@ public class WorkoutController {
     }
     
     @DeleteMapping(value = "/deleteWorkout/{workoutId}")
-    public void deleteWorkout(@PathVariable String workoutId) {
+    public void deleteWorkout(@PathVariable String workoutId) throws SQLException {
         workoutService.deleteWorkout(workoutId);
     }
     
     @PutMapping(value = "/editWorkout/{workoutId}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public void editWorkout(@RequestBody Workout workout ,@PathVariable  String workoutId) {
+    public void editWorkout(@RequestBody Workout workout ,@PathVariable  String workoutId) throws SQLException {
         workoutService.editWorkout(workout, workoutId);
     }
 }

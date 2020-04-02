@@ -1,9 +1,7 @@
 package com.workout.app;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.*; 
 
 public class WorkoutService {
@@ -54,16 +52,16 @@ public class WorkoutService {
         return db.getWorkoutsByUserId(userId);
     }
     
-    public void deleteWorkout(String workoutId) {
-        
+    public void deleteWorkout(String workoutId) throws SQLException {
         for(int counter = 0; counter < workouts.size(); counter++) {
             if(workouts.get(counter).id.equals(workoutId)) {
                 workouts.remove(counter);
             }
         }
+        db.deleteWorkoutByWorkoutId(workoutId);
     }
     
-    public void editWorkout(Workout workout, String WorkoutId) {
-        
+    public void editWorkout(Workout workout, String WorkoutId) throws SQLException {
+        db.editWorkoutByWorkoutId(workout, WorkoutId);
     }
 }
